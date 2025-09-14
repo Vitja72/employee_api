@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, Datetime
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
@@ -10,17 +10,17 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-class EmployeeDB[Base]:
-    __tablename__ = "emlpoyees"
+class EmployeeDB(Base):
+    __tablename__ = "employees"
 
     id= Column(Integer, primary_key=True, index=True)
     name= Column(String(100), nullable=False)
     email= Column(String(255), unique=True, nullable=False, index=True)
-    postition= Column(String(100), nullable=True)
-    start_date= Column(Datetime,nullable=True)
-    salery= Column(Float, nullable=True)
-    created_at= Column(Datetime, default=datetime.utcnow)
-    updated_at= Column(Datetime, nullable=True)
+    position= Column(String(100), nullable=True)
+    start_date= Column(DateTime,nullable=True)
+    salary= Column(Float, nullable=True)
+    created_at= Column(DateTime, default=datetime.utcnow)
+    updated_at= Column(DateTime, nullable=True)
 
 
 Base.metadata.create_all(bind=engine)

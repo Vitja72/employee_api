@@ -10,14 +10,14 @@ class EmployeeBase(BaseModel):
 
 
 class EmployeeCreate(EmployeeBase):
-    salery: Optional[float] = Field(None, ge=0, description="Gehalt (optional)")
+    salary: Optional[float] = Field(None, ge=0, description="Gehalt (optional)")
 
 
 class EmployeeUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=2, max_length=100 )
     email: Optional[EmailStr] = None 
     position: Optional[str] = Field(None, max_length=100)
-    salery: Optional[float] = Field(None, ge=0)
+    salary: Optional[float] = Field(None, ge=0)
 
 class Employee(EmployeeBase):
     id: int
@@ -26,5 +26,4 @@ class Employee(EmployeeBase):
 
     class Config:
         from_attributes = True 
-        
-         
+
